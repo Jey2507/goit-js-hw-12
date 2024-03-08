@@ -57,11 +57,11 @@ form.addEventListener("submit", function(event) {
         .then(arrayImg => {
             if (arrayImg.hits.length === 0) {
                 throw new Error("No images found");
+            } else {
+                renderImages(images, arrayImg.hits);
+                simpleRefresh();
+                loadMore.style.display = "block";
             }
-
-           renderImages(images, arrayImg.hits);
-           simpleRefresh();
-           loadMore.style.display = "block";
         })
         .catch(() => {
             showErrorMessage();
