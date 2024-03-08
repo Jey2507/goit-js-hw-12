@@ -14,8 +14,37 @@ export function showErrorMessage() {
     });
 }
 
+export function showEndPictures() {
+    iziToast.show({
+        message: "We're sorry, but you've reached the end of search results.",
+        maxWidth: "340px",
+        iconUrl: Error,
+        backgroundColor: "#ef4040",
+        theme: "dark",
+        color: "#fafafb",
+        timeout: 3000,
+        position: "topRight"
+    });
+}
+
+
+export function showNoneText() {
+    iziToast.show({
+        message: "Sorry, you have an empty string",
+        maxWidth: "340px",
+        iconUrl: Error,
+        backgroundColor: "#ef4040",
+        theme: "dark",
+        color: "#fafafb",
+        timeout: 3000,
+        position: "topRight"
+    });
+}
+
+
 export function renderImages(images, arrayImg) {
-    images.innerHTML = arrayImg.map(({webformatURL, largeImageURL, tags, likes, views, comments, downloads}) => {
+    const markup = arrayImg.map(
+            ({webformatURL, largeImageURL, tags, likes, views, comments, downloads}) => {
         return `<li class="li-im">
             <a href="${largeImageURL}">
                 <img class="image" src="${webformatURL}" alt="${tags}">
@@ -40,4 +69,6 @@ export function renderImages(images, arrayImg) {
             </ul>
         </li>`;
     }).join("");
+
+    images.insertAdjacentHTML("beforeend", markup);
 }
