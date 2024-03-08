@@ -61,14 +61,13 @@ form.addEventListener("submit", function(event) {
 
            renderImages(images, arrayImg.hits);
            simpleRefresh();
-            
+           loadMore.style.display = "block";
         })
         .catch(() => {
             showErrorMessage();
         })
         .finally(() => {
             hideLoad();
-            loadMore.style.display = "block";
         });
 
         current_query = query;
